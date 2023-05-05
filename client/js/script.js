@@ -21,15 +21,13 @@ buttons.forEach(button => {
             formLogin.classList.remove('form-active')
             formSignup.classList.add('form-active')
         }
-
-        
     })
 })
 
 window.addEventListener("load", (event) => {
     signupInputs.forEach(input=>input.value = '')
     loginInputs.forEach(input=>input.value = '')
-  });
+  })
 
 formSignup.addEventListener('submit', (e)=>{
     e.preventDefault()
@@ -46,7 +44,7 @@ formSignup.addEventListener('submit', (e)=>{
     const formDataSingup = new FormData(formSignup)//objeto que pega os dados do form 
     const data = Object.fromEntries(formDataSingup)//converte os dados em um objeto javascript
 
-   axios.post('http://localhost:3000/register',data)
+    axios.post('http://localhost:3333/register',data)
         .then((res)=>{
             console.log(res)
         }).catch(error=>{
@@ -74,7 +72,7 @@ formLogin.addEventListener('submit',(e)=>{
     const {email, password} = data
     
     const base64Credentials = btoa(email + ':' + password);
-    axios.post('http://localhost:3000/auth',{}, {
+    axios.post('http://localhost:3333/auth',{}, {
         headers:{
             'Authorization': `Basic ${base64Credentials}`
         }

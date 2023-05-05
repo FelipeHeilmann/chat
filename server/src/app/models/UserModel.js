@@ -21,6 +21,8 @@ const userSchema = mongoose.Schema(
             unique: true,
             lowercase: true
         },
+        friends:
+            [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }],
         password:{
             type: String,
             required: [true,"Passord is required"],

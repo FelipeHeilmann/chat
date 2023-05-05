@@ -11,6 +11,26 @@ class UserController{
         const users = await Users.find({})
         res.status(200).json({users, userName})
     }
+
+    static getFriends = async(req,res)=>{
+        const {first_name, } = req.body
+        const friends = await Users.find({first_name}).select('friends')
+        return res.status(200).json(friends)
+    }
+
+    static addFriend = async(req,res)=>{
+        try{
+            const {userId, friendId} = req.params
+            await Users.updateOne(
+                { _id: userId },
+                { $push: { friends: friendId } }
+              )
+            return res.status(200).json({message: 'friend added'})
+        }
+        catch(error){
+            return res.status(500).json({message: error.message})
+        }
+    }
     
     static getUserEmail = async(email)=>{
         return await Users.findOne({email: email})
@@ -33,7 +53,7 @@ class UserController{
 
         try{   
             const newUser = await user.save()
-            return res.status(200).json({message: "Registered user"})
+            return res.status(200).json({message: " User registered"})
         }
         catch(err){
             console.log("erro aqui")
