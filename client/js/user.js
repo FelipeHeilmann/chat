@@ -3,15 +3,15 @@ const table = document.querySelector('table')
 const logout = document.querySelector('button')
 const container = document.querySelector('section')
 const token = document.cookie.split('=')[1]
-    axios.get('http://localhost:3333/users', {
+    axios.get('http://localhost:3333/friends', {
         headers:{
             'Authorization': `Bearer ${token}`
         }
     }).then(res=>{
-        title.innerText+= " " + res.data.userName
-        const users = res.data.users
-        users.forEach((user, i) => {
-            let fullName = `${user.first_name} ${user.last_name}`
+        title.innerText+= " " + res.data.first_name
+        const friends = res.data.friends[0].friends
+        friends.forEach((friend, i) => {
+            let fullName = `${friend.first_name} ${friend.last_name}`
             let userChatContainer = createElement('div')
             let name = createElement('h4')
             let perfilIcon = createElement('div')

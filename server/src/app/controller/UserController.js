@@ -13,11 +13,11 @@ class UserController{
     }
 
     static getFriends = async(req,res)=>{
-        const {first_name, } = req.auth
+        const {first_name,} = req.auth
         const friends = await Users.find({first_name})
-            .select('friends')
             .populate('friends', ['first_name','last_name'])
-        return res.status(200).json(friends)
+            .select('friends')
+        return res.status(200).json({first_name,friends})
     }
 
     static addFriend = async(req,res)=>{
