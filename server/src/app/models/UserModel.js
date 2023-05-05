@@ -22,7 +22,7 @@ const userSchema = mongoose.Schema(
             lowercase: true
         },
         friends:
-            [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }],
+            [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }],
         password:{
             type: String,
             required: [true,"Passord is required"],
