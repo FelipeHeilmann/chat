@@ -19,6 +19,12 @@ header{
     margin-right: 15px;
 }
 
+.button-container{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .logout-btn{
     width: 150px;
     height: 50px;
@@ -28,6 +34,17 @@ header{
 
 .logout-btn:hover{
     background-color: var(--color-worning-dark);
+}
+
+.addFriend{
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    background-color: var(--color-fourth);
+}
+
+.addFriend:hover{
+    background-color: var(--color-fifth);
 }
 
 section{

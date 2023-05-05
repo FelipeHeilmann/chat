@@ -10,7 +10,7 @@ const token = document.cookie.split('=')[1]
     }).then(res=>{
         title.innerText+= " " + res.data.first_name
         const friends = res.data.friends[0].friends
-        friends.forEach((friend, i) => {
+        friends.forEach(friend => {
             let fullName = `${friend.first_name} ${friend.last_name}`
             let userChatContainer = createElement('div')
             let name = createElement('h4')
